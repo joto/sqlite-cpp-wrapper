@@ -63,20 +63,24 @@ namespace Sqlite {
             return m_db;
         }
 
-        void begin_transaction() {
-            if (SQLITE_OK != sqlite3_exec(m_db, "BEGIN TRANSACTION;", 0, 0, 0)) {
+        void exec(const std::string& sql) {
+            if (SQLITE_OK != sqlite3_exec(m_db, sql.c_str(), 0, 0, 0)) {
                 std::cerr << "Database error: " << sqlite3_errmsg(m_db) << "\n";
                 sqlite3_close(m_db);
                 throw std::runtime_error("Sqlite error");
             }
         }
 
+        void begin_transaction() {
+            exec("BEGIN TRANSACTION;");
+        }
+
         void commit() {
-            if (SQLITE_OK != sqlite3_exec(m_db, "COMMIT;", 0, 0, 0)) {
-                std::cerr << "Database error: " << sqlite3_errmsg(m_db) << "\n";
-                sqlite3_close(m_db);
-                throw std::runtime_error("Sqlite error");
-            }
+            exec("COMMIT;");
+        }
+
+        void rollback() {
+            exec("ROLLBACK;");
         }
 
     private:
