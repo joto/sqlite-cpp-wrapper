@@ -19,13 +19,13 @@
 #include <sqlite3.h>
 
 /**
-*  @brief The %Sqlite classes wrap the %Sqlite C library.
-*/
+ *  @brief The %Sqlite classes wrap the %Sqlite C library.
+ */
 namespace Sqlite {
 
     /**
-    *  Exception returned by Sqlite wrapper classes when there are errors in the Sqlite3 lib
-    */
+     *  Exception returned by Sqlite wrapper classes when there are errors in the Sqlite3 lib
+     */
     class Exception : public std::runtime_error {
 
     public:
@@ -37,8 +37,8 @@ namespace Sqlite {
     };
 
     /**
-    *  Wrapper class for Sqlite database
-    */
+     *  Wrapper class for Sqlite database
+     */
     class Database {
 
     public:
@@ -90,8 +90,8 @@ namespace Sqlite {
     }; // class Database
 
     /**
-    * Wrapper class for Sqlite prepared statement.
-    */
+     * Wrapper class for Sqlite prepared statement.
+     */
     class Statement {
 
     public:
