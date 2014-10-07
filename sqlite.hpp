@@ -50,6 +50,9 @@ namespace Sqlite {
             }
         }
 
+        Database(const std::string& filename, const int flags) : Database(filename.c_str(), flags) {
+        }
+
         ~Database() {
             sqlite3_close(m_db);
         }
